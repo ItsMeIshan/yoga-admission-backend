@@ -1,8 +1,14 @@
 const env = require("dotenv").config();
 
 const Sequelize = require("sequelize");
-const sequelize = new Sequelize("yoga-api", "root", process.env.SQLPASS, {
-  dialect: "mysql",
-});
+const sequelize = new Sequelize(
+  process.env.MYSQLDATABASE,
+  "root",
+  process.env.SQLPASS,
+  {
+    host: process.env.MYSQLHOST || "127.0.0.1",
+    dialect: "mysql",
+  }
+);
 
 module.exports = sequelize;
